@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from "react-redux";
-// import formReducer from "./slices/formSlice";
+import formReducer from "./slices/initialDataSlice";
 
 
 export const store = configureStore({
   reducer: {
-    // field: fieldReducer;
+    form: formReducer
   },
 });
 

@@ -1,93 +1,75 @@
 import { Theme, presetGpnDefault } from "@consta/uikit/Theme";
+import { Text } from "@consta/uikit/Text";
 import { Line } from '@consta/charts/Line';
 import './Chart.css';
 
 const colorMap: { [key: string]: string } = {
-  'Austria': '#ff7514',
-  'Canada': '#ad4800',
-  'France': '#ca3a27',
-  'Germany': '#470d0b',
-  'Japan': '#ffc0cb',
-  'Netherlands': '#ffd88a',
-  'New Zealand': '#b39929',
-  'Spain': '#c5e384',
-  'Sweden': '#8c4566',
-  'Switzerland': '#924e7d',
-  'United Kingdom': '#905d5d',
-  'United States': '#a2a2d0',
+  'IPR': '#ff7514',
+  'VLP': '#ad4800',
 };
 
-type Item = { Date: string; scales: number; country: string; }
+type Item = { q_liq: number; p_wf: number; service: string; }
 
 const data: Item[] = [
   {
-    Date: '2010-01',
-    scales: 1998,
-    country: 'France',
+    q_liq: 0,
+    p_wf: 8,
+    service: 'IPR',
   },
   {
-    Date: '2011-02',
-    scales: 1850,
-    country: 'France',
+    q_liq: 5,
+    p_wf: 7,
+    service: 'IPR',
   },
   {
-    Date: '2012-02',
-    scales: 4000,
-    country: 'France',
+    q_liq: 9,
+    p_wf: 5,
+    service: 'IPR',
   },
   {
-    Date: '2013-02',
-    scales: 500,
-    country: 'Sweden',
+    q_liq: 13,
+    p_wf: 0,
+    service: 'IPR',
   },
   {
-    Date: '2014-02',
-    scales: 8000,
-    country: 'Sweden',
+    q_liq: 0,
+    p_wf: 0,
+    service: 'VPL',
   },
   {
-    Date: '2015-02',
-    scales: 5999,
-    country: 'Sweden',
+    q_liq: 7,
+    p_wf: 2,
+    service: 'VPL',
   },
   {
-    Date: '2016-02',
-    scales: 12000,
-    country: 'Switzerland',
+    q_liq: 10,
+    p_wf: 4,
+    service: 'VPL',
   },
   {
-    Date: '2017-02',
-    scales: 10,
-    country: 'Switzerland',
-  },
-  {
-    Date: '2018-02',
-    scales: 300,
-    country: 'Switzerland',
-  },
-  {
-    Date: '2019-02',
-    scales: 1850,
-    country: 'Switzerland',
+    q_liq: 13,
+    p_wf: 8,
+    service: 'VPL',
   },
 ]
 
 export default function Chart() {
   return (
     <div className="Chart">
+      <Text>График узлового анализа</Text>
       <Line
         data={data}
-        xField="Date"
-        yField="scales"
-        seriesField="country"
-        lineStyle={({ country }) => {
+        xField="q_liq"
+        yField="p_wf"
+        seriesField="service"
+        lineStyle={({ service }) => {
           return {
-            stroke: colorMap[country],
+            stroke: colorMap[service],
           };
         }}
         meta={{
-          Date: {alias: 'Дата'},
-          scales : {alias: 'Число'},
+          q_liq: {alias: 'Дебит жидкости:'},
+          p_wf : {alias: 'Забойное давление:'},
           }}
     // }
   />
