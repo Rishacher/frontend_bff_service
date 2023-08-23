@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { Table, TableColumn } from "@consta/uikit/Table";
 import { TextField, TextFieldOnChangeArguments } from '@consta/uikit/TextField';
 import './InitialData.css';
@@ -113,20 +112,11 @@ const rows = [
 
 export default function InitialData() {
     const [cellValues, setCellValues] = useState<{ [key: string]: string | null }>({});
-    const [isDisabled, setIsDisabled] = useState<{ [key: string]: boolean}>({});
   
     // Функция для обновления значения ячейки
     const handleChange = (id: string, args: TextFieldOnChangeArguments) => {
       const { value } = args;
       setCellValues({ ...cellValues, [id]: value });
-    };
-  
-    const handleClick = (id: string) => {
-        setIsDisabled({ ...isDisabled, [id]: false });
-      };
-
-    const handleBlur = (id: string,  args: TextFieldOnChangeArguments) => {
-        setIsDisabled({ ...isDisabled, [id]: false });
     };
 
     const columns: TableColumn<typeof rows[number]>[] = [
@@ -151,10 +141,7 @@ export default function InitialData() {
         renderCell: (row) => (
           <TextField
             size='m'
-            disabled={isDisabled[row.id] || !cellValues[row.id]}
             onChange={(value) => handleChange(row.id, value)}
-            onClick={() => handleClick(row.id)}
-            onBlur={(value) => handleBlur(row.id, value)}
             value={cellValues[row.id] || ""}
             type="number"
             placeholder="Введите значение..."

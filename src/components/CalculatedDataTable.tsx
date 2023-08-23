@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { Table, TableColumn } from "@consta/uikit/Table";
 import './CalculatedDataTable.css';
 
