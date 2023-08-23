@@ -1,0 +1,9 @@
+.Buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.Button {
+    margin: 8px;
+}

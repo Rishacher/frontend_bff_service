@@ -1,0 +1,14 @@
+.InitialData {
+    margin: 24px;
+    /* width: 517px;
+    height: 761px; */
+    /* display: flex;
+    
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0; */
+}
+
+.TextField {
+    width: 100%;
+}
